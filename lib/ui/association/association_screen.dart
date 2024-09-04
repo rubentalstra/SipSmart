@@ -33,7 +33,7 @@ class _AssociationScreenState extends State<AssociationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Associations"),
+        title: const Text("Associations"),
       ),
       body: associations.isEmpty
           ? const Center(child: Text("No associations found."))
@@ -80,16 +80,16 @@ class _AssociationScreenState extends State<AssociationScreen> {
 
   // Dialog to add an association using an invite code
   void _showInviteCodeDialog(BuildContext context) {
-    final TextEditingController _inviteCodeController = TextEditingController();
+    final TextEditingController inviteCodeController = TextEditingController();
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Add Association"),
+          title: const Text("Add Association"),
           content: TextField(
-            controller: _inviteCodeController,
-            decoration: InputDecoration(
+            controller: inviteCodeController,
+            decoration: const InputDecoration(
               hintText: "Enter invite code",
             ),
           ),
@@ -98,17 +98,17 @@ class _AssociationScreenState extends State<AssociationScreen> {
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog without action
               },
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             ElevatedButton(
               onPressed: () {
-                String inviteCode = _inviteCodeController.text.trim();
+                String inviteCode = inviteCodeController.text.trim();
                 if (inviteCode.isNotEmpty) {
                   _addAssociation(inviteCode);
                 }
                 Navigator.of(context).pop(); // Close the dialog after adding
               },
-              child: Text("Add"),
+              child: const Text("Add"),
             ),
           ],
         );

@@ -59,7 +59,7 @@ class MemberProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Profile Picture
-            CircleAvatar(
+            const CircleAvatar(
               radius: 60,
               backgroundImage: NetworkImage(profilePictureUrl),
             ),
@@ -85,7 +85,7 @@ class MemberProfileScreen extends StatelessWidget {
               leading: const Icon(Icons.visibility),
               title: Text(AppLocalizations.of(context)!.profileTitle),
               subtitle: Text(
-                isProfilePublic
+                isProfilePublic == true
                     ? AppLocalizations.of(context)!.profilePublic
                     : AppLocalizations.of(context)!.profilePrivate,
                 style: Theme.of(context).textTheme.bodySmall,
@@ -159,7 +159,7 @@ class MemberProfileScreen extends StatelessWidget {
                   ),
                 ),
               );
-            }).toList(),
+            }),
           ],
         ),
       ),
