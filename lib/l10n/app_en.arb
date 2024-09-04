@@ -1,0 +1,17 @@
+{
+    "@@locale": "en",
+    "appTitle": "SipSmart",
+    "homeTitle": "Home",
+    "associationTitle": "Associations",
+    "profileTitle": "Profile",
+    "settingsTitle": "Settings",
+    "languagePreference": "Language Preference",
+    "manageNotifications": "Manage Notifications",
+    "themePreference": "Theme",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "privacyPolicy": "Privacy Policy",
+    "contactSupport": "Contact Support",
+    "appVersion": "App Version",
+    "logout": "Log out"
+}

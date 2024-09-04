@@ -1,0 +1,17 @@
+{
+    "@@locale": "nl",
+    "appTitle": "SipSmart",
+    "homeTitle": "Startpagina",
+    "associationTitle": "Verenigingen",
+    "profileTitle": "Profiel",
+    "settingsTitle": "Instellingen",
+    "languagePreference": "Taalvoorkeur",
+    "manageNotifications": "Beheer meldingen",
+    "themePreference": "Thema",
+    "lightTheme": "Licht",
+    "darkTheme": "Donker",
+    "privacyPolicy": "Privacybeleid",
+    "contactSupport": "Contact ondersteuning",
+    "appVersion": "App-versie",
+    "logout": "Uitloggen"
+}
