@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:equatable/equatable.dart';
 
-class ThemeState extends Equatable {
-  final ThemeData themeData;
-  const ThemeState({required this.themeData});
+class ThemeState {
+  final ThemeMode themeMode;
 
-  @override
-  List<Object> get props => [themeData];
+  ThemeState({required this.themeMode});
 }

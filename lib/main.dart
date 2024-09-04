@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sip_smart/bloc/locale/locale_bloc.dart';
+import 'package:sip_smart/bloc/locale/locale_state.dart';
 import 'package:sip_smart/bloc/theme/theme_bloc.dart';
 import 'package:sip_smart/bloc/theme/theme_state.dart';
+import 'package:sip_smart/core/themes/themes.dart';
 import 'package:sip_smart/ui/association/association_screen.dart';
 import 'package:sip_smart/ui/home/home_screen.dart';
 import 'package:sip_smart/ui/member/member_profile_screen.dart';
@@ -12,8 +15,15 @@ import 'package:sip_smart/ui/widgets/bottom_nav_bar.dart';
 
 void main() {
   runApp(
-    BlocProvider(
-      create: (context) => ThemeBloc(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(
+          create: (_) => ThemeBloc(),
+        ),
+        BlocProvider<LocaleBloc>(
+          create: (_) => LocaleBloc(),
+        ),
+      ],
       child: const SipSmartApp(),
     ),
   );
@@ -26,19 +36,24 @@ class SipSmartApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, themeState) {
-        return MaterialApp(
-          title: 'SipSmart',
-          theme: themeState
-              .themeData, // Apply the current theme based on Bloc state
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          home:
-              const MainScreen(), // Set MainScreen with the bottom navigation bar
+        return BlocBuilder<LocaleBloc, LocaleState>(
+          builder: (context, localeState) {
+            return MaterialApp(
+              title: 'SipSmart',
+              theme: AppThemes.lightTheme,
+              darkTheme: AppThemes.darkTheme,
+              themeMode: themeState.themeMode,
+              locale: localeState.locale,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+              home: const MainScreen(),
+            );
+          },
         );
       },
     );

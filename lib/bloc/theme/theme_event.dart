@@ -1,10 +1,9 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
-abstract class ThemeEvent extends Equatable {
-  const ThemeEvent();
+abstract class ThemeEvent {}
 
-  @override
-  List<Object> get props => [];
+class ThemeChanged extends ThemeEvent {
+  final ThemeMode themeMode;
+
+  ThemeChanged({required this.themeMode});
 }
-
-class ToggleThemeEvent extends ThemeEvent {}
