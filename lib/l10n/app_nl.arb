@@ -31,5 +31,7 @@
     "welcomeMessage": "Welkom bij SipSmart",
     "startJourney": "Begin uw reis",
     "loading": "Bezig met laden...",
-    "tryAgain": "Probeer opnieuw"
+    "tryAgain": "Probeer opnieuw",
+    "profilePublic": "Openbaar profiel",
+    "profilePrivate": "Privéprofiel"
 }

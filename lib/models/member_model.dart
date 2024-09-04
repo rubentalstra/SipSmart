@@ -10,6 +10,7 @@ class Member extends Equatable {
   final List<Role> roles; // List of custom roles assigned to the member
   final String profilePictureUrl;
   final DateTime createdAt;
+  final bool isProfilePublic; // New field to track profile visibility
 
   const Member({
     required this.id,
@@ -19,11 +20,20 @@ class Member extends Equatable {
     required this.roles,
     required this.profilePictureUrl,
     required this.createdAt,
+    required this.isProfilePublic, // Initialize with the new field
   });
 
   @override
-  List<Object?> get props =>
-      [id, name, email, associationId, roles, profilePictureUrl, createdAt];
+  List<Object?> get props => [
+        id,
+        name,
+        email,
+        associationId,
+        roles,
+        profilePictureUrl,
+        createdAt,
+        isProfilePublic
+      ];
 
   factory Member.fromJson(Map<String, dynamic> json) {
     return Member(
@@ -36,6 +46,8 @@ class Member extends Equatable {
           .toList(), // Deserialize list of roles
       profilePictureUrl: json['profile_picture_url'],
       createdAt: DateTime.parse(json['created_at']),
+      isProfilePublic:
+          json['is_profile_public'], // Deserialize profile visibility
     );
   }
 
@@ -47,5 +59,19 @@ class Member extends Equatable {
       }
     }
     return false;
+  }
+
+  // Method to serialize Member to JSON, including profile visibility
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'association_id': associationId,
+      'roles': roles.map((role) => role.toJson()).toList(),
+      'profile_picture_url': profilePictureUrl,
+      'created_at': createdAt.toIso8601String(),
+      'is_profile_public': isProfilePublic,
+    };
   }
 }

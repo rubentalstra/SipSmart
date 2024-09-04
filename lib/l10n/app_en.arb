@@ -31,5 +31,7 @@
     "welcomeMessage": "Welcome to SipSmart",
     "startJourney": "Start your journey",
     "loading": "Loading...",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "profilePublic": "Public Profile",
+    "profilePrivate": "Private Profile"
 }
